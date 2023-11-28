@@ -29,9 +29,13 @@ export default defineNuxtConfig({
     },
   },
   image: {
-    provider: "netlify",
-    netlify: {
-      baseURl: "",
+    providers: {
+      random: {
+        provider: "netlify",
+        netlify: {
+          baseURl: "",
+        },
+      },
     },
   },
 });
