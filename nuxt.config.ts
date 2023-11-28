@@ -31,12 +31,7 @@ export default defineNuxtConfig({
   image: {
     provider: "netlify",
     netlify: {
-      baseURl: process.env.IMAGES_URL,
-      srcset: false,
+      // baseURl: process.env.IMAGES_URL,
     },
-    modifiers: {
-      srcset: "",
-    },
-    srcset: false,
   },
 });

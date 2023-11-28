@@ -8,10 +8,7 @@
       <div class="movie-container">
         <div class="card" v-for="movie in movies">
           <div class="img">
-            <NuxtImg
-              :src="`${img_starting_path}` + `${movie?.poster_path}`"
-              alt=""
-            />
+            <NuxtImg :src="img_starting_path + movie?.poster_path" alt="" />
           </div>
           <div class="title">
             <h3>{{ sliceHeadline(movie?.title) }}</h3>
