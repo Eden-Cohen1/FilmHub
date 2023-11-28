@@ -13,7 +13,12 @@
           :src="img_starting_path + review.author_details.avatar_path"
           alt="author"
         />
-        <NuxtImg v-else src="/profile-photo.png" alt="author" />
+        <NuxtImg
+          provider="random"
+          v-else
+          src="/profile-photo.png"
+          alt="author"
+        />
         <div class="author">
           <h5>
             {{ review.author }}

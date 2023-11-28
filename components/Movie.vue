@@ -3,10 +3,12 @@
     <div class="container">
       <div class="hero">
         <NuxtImg
+          format="webp"
           class="cover"
           :src="img_starting_path + movie?.backdrop_path"
         />
         <NuxtImg
+          format="webp"
           class="card-img"
           :src="`${img_starting_path}` + `${movie?.poster_path}`"
         />

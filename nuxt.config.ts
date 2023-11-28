@@ -29,6 +29,7 @@ export default defineNuxtConfig({
     },
   },
   image: {
+    format: ["webp"],
     providers: {
       random: {
         provider: "netlify",

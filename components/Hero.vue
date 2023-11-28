@@ -1,13 +1,25 @@
 <template>
   <main class="hero" v-show="width">
     <div class="bg-hero">
-      <NuxtImg provider="random" v-if="imgSize === 1" :src="`hero-image.png`" />
       <NuxtImg
+        quality="80"
         provider="random"
+        format="webp"
+        v-if="imgSize === 1"
+        :src="`hero-image.png`"
+      />
+      <nuxt-img
+        provider="random"
+        format="webp"
         v-else-if="imgSize === 2"
         :src="`hero-image-med.png`"
       />
-      <NuxtImg provider="random" v-else :src="`hero-image-small.png`" />
+      <NuxtImg
+        provider="random"
+        format="webp"
+        v-else
+        :src="`hero-image-small.png`"
+      />
     </div>
   </main>
 </template>
