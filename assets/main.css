@@ -1,0 +1,56 @@
+:root {
+  /* --dark-bg-main: #22211a; */
+  /* --dark-bg-main: #0e0d0b; */
+  --dark-bg-main: #060607;
+  --dark-bg-sec: #121212;
+  --light-bg-main: #dcdcf0a6;
+  --light-bg-sec: #c3c3e0ec;
+  --btn-color: #f4c417;
+  --btn-hover-color: #c09b16;
+}
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body,
+html {
+  padding: 0rem;
+  margin: 0;
+  scroll-behavior: smooth;
+  background-color: inherit;
+  overflow-x: hidden;
+  background-color: var(--dark-bg-main);
+}
+h1,
+h2,
+h3 {
+  color: white;
+}
+.main-color {
+  background-color: var(--dark-bg-main);
+}
+
+.sec-color {
+  background-color: var(--dark-bg-sec);
+}
+
+@keyframes hover-grow {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+@keyframes hover-shrink {
+  0% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}

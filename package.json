@@ -10,9 +10,17 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@element-plus/nuxt": "^1.0.7",
     "@nuxt/devtools": "latest",
+    "@nuxtjs/google-fonts": "^3.1.0",
+    "element-plus": "^2.4.2",
     "nuxt": "^3.8.2",
+    "nuxt-gtag": "^1.1.1",
+    "nuxt-icon": "^0.6.6",
     "vue": "^3.3.8",
     "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "@nuxt/image": "^1.1.0"
   }
 }
