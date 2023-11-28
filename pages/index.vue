@@ -8,7 +8,10 @@
       <div class="movie-container">
         <div class="card" v-for="movie in movies">
           <div class="img">
-            <NuxtImg :src="img_starting_path + movie?.poster_path" alt="" />
+            <NuxtImg
+              :src="`${img_starting_path}` + `${movie?.poster_path}`"
+              alt=""
+            />
           </div>
           <div class="title">
             <h3>{{ sliceHeadline(movie?.title) }}</h3>
@@ -166,11 +169,12 @@ img {
   cursor: pointer;
   font-size: small;
   opacity: 0;
+  text-decoration: none;
   animation: hover-shrink 0.2s forwards;
   transition: opacity 0.5s ease 0.2s;
 }
 .card a:hover {
-  font-weight: 600;
+  font-weight: 500;
   animation: hover-grow 0.2s forwards;
 }
 .card:hover a {
