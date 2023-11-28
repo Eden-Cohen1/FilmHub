@@ -1,6 +1,7 @@
 <template>
   <div class="reviews">
-    <h1>Reviews</h1>
+    <h1 v-if="reviews.length">Reviews</h1>
+    <h1 v-else>- No Reviews -</h1>
     <figure class="review" v-for="review in reviews">
       <blockquote>
         {{ review.content }}
@@ -16,7 +17,8 @@
         <div class="author">
           <h5>
             {{ review.author }}
-            <span> {{ review.created_at.split("T")[0] }}</span>
+            <br />
+            <small>{{ review.created_at.split("T")[0] }}</small>
           </h5>
         </div>
       </div>
@@ -125,10 +127,9 @@ figure.review .author h5 {
   margin: 0;
   font-weight: 800;
 }
-figure.review .author h5 span {
-  color: #f0f0ed;
+figure.review .author h5 small {
+  color: gray;
   font-weight: 400;
   text-transform: none;
-  padding-left: 5px;
 }
 </style>

@@ -23,7 +23,7 @@
   position: fixed;
   top: 0;
   z-index: 10;
-  padding: 0.7rem 0 0.7rem 1rem;
+  padding: 0.5rem 0 0.5rem 1rem;
 }
 
 .nav-items {
@@ -80,9 +80,6 @@ a {
 @media screen and (max-width: 750px) {
   #search {
     width: 2rem;
-  }
-  .logo {
-    width: 4rem;
   }
   .nav-items {
     justify-content: center;

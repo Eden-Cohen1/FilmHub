@@ -25,10 +25,10 @@
             genre.name
           }}</span>
           <br />
-          <span class="tag rating"
+          <span class="tag custom"
             >{{ movie?.vote_average.toFixed(1) }} / 10</span
           >
-          <span class="tag budget">{{ shortenNumber(movie.budget) }}</span>
+          <span class="tag custom">{{ shortenNumber(movie.budget) }}</span>
         </div>
         <div class="column2">
           <h1>Description</h1>
@@ -85,7 +85,7 @@ console.log(movie);
   z-index: 1;
   width: 780px;
   max-height: 400px;
-  opacity: 0.7;
+  opacity: 0.82;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
@@ -197,15 +197,18 @@ a:hover {
   color: #888784;
 }
 
-.rating,
-.budget {
+.custom {
   background: #2a264f;
   color: white;
+}
+.custom:hover {
+  background-color: #1c1935;
 }
 
 @media screen and (max-width: 840px) {
   .container {
     width: 100%;
+    border-radius: 0px;
   }
   .hero {
     height: fit-content !important;
@@ -242,7 +245,7 @@ a:hover {
   }
   .column1 {
     top: 0px;
-    left: 0px;
+    left: 50px;
     padding-bottom: 1rem;
     padding-top: 4rem;
   }
@@ -271,6 +274,10 @@ a:hover {
   }
   .card-img {
     width: 6rem;
+  }
+  .column1 {
+    top: 0px;
+    left: 0px;
   }
 }
 </style>
