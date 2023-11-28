@@ -4,7 +4,7 @@
       <div class="hero">
         <NuxtImg
           class="cover"
-          :src="`${img_starting_path}` + `${movie?.backdrop_path}`"
+          :src="img_starting_path + movie?.backdrop_path"
         />
         <NuxtImg
           class="card-img"

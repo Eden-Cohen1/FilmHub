@@ -1,5 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  routeRules: {
+    "/": { prerender: true },
+  },
   devtools: { enabled: true },
   modules: [
     "nuxt-icon",
@@ -9,7 +12,6 @@ export default defineNuxtConfig({
     "nuxt-gtag",
   ],
   routes: [
-    { path: "/api/posts/:id", component: "~/pages/posts/_id.vue" },
     { path: "/api/movies/:page", component: "~/pages/index.vue" },
     // other routes...
   ],
@@ -30,6 +32,11 @@ export default defineNuxtConfig({
     provider: "netlify",
     netlify: {
       baseURl: process.env.IMAGES_URL,
+      srcset: false,
     },
+    modifiers: {
+      srcset: "",
+    },
+    srcset: false,
   },
 });
