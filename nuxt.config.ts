@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@element-plus/nuxt",
     "@nuxtjs/google-fonts",
+    "@nuxt/image-edge",
     "@nuxt/image",
     "nuxt-gtag",
   ],
@@ -36,6 +37,7 @@ export default defineNuxtConfig({
         netlify: {
           baseURl: "",
         },
+        format: ["webp"],
       },
     },
   },

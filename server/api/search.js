@@ -7,9 +7,8 @@ const options = {
   },
 };
 export default defineEventHandler(async (event) => {
-  const query = getQuery(event);
-  const { page } = query;
-  const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&page=${page}`;
+  const { search } = getQuery(event);
+  const url = `https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`;
   const response = await $fetch(url, options);
   return response;
 });

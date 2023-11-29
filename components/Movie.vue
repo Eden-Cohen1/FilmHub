@@ -30,7 +30,9 @@
           <span class="tag custom"
             >{{ movie?.vote_average.toFixed(1) }} / 10</span
           >
-          <span class="tag custom">{{ shortenNumber(movie.budget) }}</span>
+          <span class="tag custom" v-show="movie.budget"
+            >Budget: {{ shortenNumber(movie.budget) }}</span
+          >
         </div>
         <div class="column2">
           <h1>Description</h1>

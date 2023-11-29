@@ -8,7 +8,6 @@ const options = {
 };
 export default defineEventHandler(async (event) => {
   const { id } = event.context.params;
-  console.log(id);
   const urlDetails = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
   const urlReviews = `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&page=1`;
   const movie = await $fetch(urlDetails, options);

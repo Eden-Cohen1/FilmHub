@@ -3,12 +3,12 @@
     <div class="bg-hero">
       <NuxtImg
         quality="80"
-        provider="random"
         format="webp"
+        provider="random"
         v-if="imgSize === 1"
         :src="`hero-image.png`"
       />
-      <nuxt-img
+      <NuxtImg
         provider="random"
         format="webp"
         v-else-if="imgSize === 2"
