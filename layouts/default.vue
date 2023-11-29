@@ -14,7 +14,9 @@
   top: 0;
   z-index: 10;
   display: flex;
-  padding: 0.7rem 0 0.7rem 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.7rem 0 0.7rem 0rem;
 }
 .logo {
   position: relative;
@@ -25,6 +27,8 @@
 a {
   width: 5rem;
   height: 29px;
+}
+img {
   margin: auto;
 }
 </style>

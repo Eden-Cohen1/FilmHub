@@ -33,7 +33,7 @@
             name="e"
             @click="sortByDate(movies)"
           />
-          release date</label
+          date</label
         >
         <label
           ><input
@@ -345,6 +345,12 @@ img {
 @media screen and (max-width: 750px) {
   .movie-container {
     padding: 0rem;
+  }
+  .sort {
+    width: 70vw;
+    display: flex;
+    align-items: left;
+    justify-content: left;
   }
 }
 </style>
