@@ -81,7 +81,6 @@ watch(loading, async (newValue) => {
     pageCounter.value++;
     const data = await fetchLibraryPage(pageCounter.value);
     movies.push(...data);
-    console.log(sortOption.value, pageCounter.value);
     if (pageCounter.value >= 2) {
       notifyUnsorted();
       sortOption.value?.forEach((opt) => (opt.checked = false));
@@ -227,7 +226,7 @@ img {
   font-weight: 700;
   word-wrap: break-word;
   color: #fffc;
-  padding: 15px 10px;
+  padding: 10px 10px;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -237,7 +236,7 @@ img {
   position: absolute;
   bottom: 80px;
   height: 120px;
-  padding: 0px 10px 20px;
+  padding: 0px 10px 30px;
   text-align: center;
   font-size: 0.85rem;
   color: #fff;

@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   routeRules: {
     "/": { prerender: true },
   },
+
   devtools: { enabled: true },
   modules: [
     "nuxt-icon",
@@ -11,10 +12,6 @@ export default defineNuxtConfig({
     "@nuxt/image-edge",
     "@nuxt/image",
     "nuxt-gtag",
-  ],
-  routes: [
-    { path: "/api/movies/:page", component: "~/pages/index.vue" },
-    // other routes...
   ],
   css: ["~/assets/main.css"],
   googleFonts: {

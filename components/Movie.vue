@@ -58,6 +58,7 @@ const movie = inject("movie");
   position: relative;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
+  box-shadow: 0px 2px 3px 2px rgba(255, 255, 255, 0.26);
 }
 
 .hero {
@@ -201,6 +202,7 @@ a:hover {
   .container {
     width: 100%;
     border-radius: 0px;
+    box-shadow: 0px 7px 2px 2px rgba(255, 255, 255, 0.26);
   }
   .hero {
     height: fit-content !important;

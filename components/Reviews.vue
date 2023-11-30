@@ -40,7 +40,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
   padding-top: 5rem;
 }
 figure.review {
@@ -113,6 +113,7 @@ figure.review .arrow {
   display: flex;
   align-items: center;
   gap: 1rem;
+  padding: 0.5rem;
 }
 figure.review .author {
   position: relative;
