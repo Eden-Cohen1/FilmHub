@@ -2,23 +2,15 @@
   <div class="movie-card">
     <div class="container">
       <div class="hero">
-        <NuxtImg
-          format="webp"
-          class="cover"
-          :src="img_starting_path + movie?.backdrop_path"
-        />
-        <NuxtImg
-          format="webp"
-          class="card-img"
-          :src="`${img_starting_path}` + `${movie?.poster_path}`"
-        />
+        <NuxtImg format="webp" class="cover" :src="movie?.backdrop_path" />
+        <NuxtImg format="webp" class="card-img" :src="movie?.poster_path" />
 
         <div class="details">
           <div class="title1">
-            {{ truncateText(movie.title, 55) }}
-            <span>{{ movie?.release_date?.split("-")[0] }}</span>
+            {{ movie.title }}
+            <span>{{ movie.release_date }}</span>
           </div>
-          <div class="title2">{{ movie.production_companies[0].name }}</div>
+          <div class="title2">{{ movie.production_company }}</div>
         </div>
       </div>
       <div class="description">
@@ -27,11 +19,9 @@
             genre.name
           }}</span>
           <br />
-          <span class="tag custom"
-            >{{ movie?.vote_average.toFixed(1) }} / 10</span
-          >
+          <span class="tag custom">{{ movie.vote_average }} / 10</span>
           <span class="tag custom" v-show="movie.budget"
-            >Budget: {{ shortenNumber(movie.budget) }}</span
+            >Budget: {{ movie.budget }}</span
           >
         </div>
         <div class="column2">
@@ -49,9 +39,7 @@
 </template>
 
 <script setup>
-const img_starting_path = "https://image.tmdb.org/t/p/original";
 const movie = inject("movie");
-console.log(movie);
 </script>
 
 <style scoped>

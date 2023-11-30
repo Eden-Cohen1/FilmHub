@@ -1,6 +1,4 @@
 :root {
-  /* --dark-bg-main: #22211a; */
-  /* --dark-bg-main: #0e0d0b; */
   --dark-bg-main: #060607;
   --dark-bg-sec: #222222b9;
   --light-bg-main: #dcdcf0a6;
@@ -11,7 +9,6 @@
 * {
   font-family: "Poppins", sans-serif;
 }
-
 body,
 html {
   padding: 0rem;
@@ -33,7 +30,6 @@ h3 {
 .sec-color {
   background-color: var(--dark-bg-sec);
 }
-
 @keyframes hover-grow {
   0% {
     -webkit-transform: scale(1);

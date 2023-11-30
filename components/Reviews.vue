@@ -8,11 +8,7 @@
         <div class="arrow"></div>
       </blockquote>
       <div class="author-block">
-        <NuxtImg
-          v-if="review.author_details.avatar_path"
-          :src="img_starting_path + review.author_details.avatar_path"
-          alt="author"
-        />
+        <NuxtImg v-if="review.avatar" :src="review.avatar" alt="author" />
         <NuxtImg
           provider="random"
           v-else
@@ -23,7 +19,7 @@
           <h5>
             {{ review.author }}
             <br />
-            <small>{{ review.created_at.split("T")[0] }}</small>
+            <small>{{ review.created_at }}</small>
           </h5>
         </div>
       </div>
@@ -32,12 +28,8 @@
 </template>
 
 <script setup>
-const img_starting_path = "https://image.tmdb.org/t/p/original";
-
-let reviews = inject("reviews").results;
+let reviews = inject("reviews");
 reviews = reviews.filter((review) => review.content.length < 1500).slice(1, 8);
-
-console.log(reviews);
 </script>
 <style scoped>
 h1 {

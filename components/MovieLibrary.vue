@@ -17,32 +17,14 @@
       </form>
       <div class="sort">
         <p>sort by:</p>
-        <label
+        <label v-for="radio in radioButtons"
           ><input
             type="radio"
-            v-model="sortOption"
-            name="e"
-            @click="sortByRating(movies)"
+            ref="sortOption"
+            name="sort"
+            @click="radio.function(movies)"
           />
-          rating</label
-        >
-        <label
-          ><input
-            type="radio"
-            v-model="sortOption"
-            name="e"
-            @click="sortByDate(movies)"
-          />
-          date</label
-        >
-        <label
-          ><input
-            type="radio"
-            v-model="sortOption"
-            name="e"
-            @click="sortByTitle(movies)"
-          />
-          A-Z</label
+          {{ radio.text }}</label
         >
       </div>
     </div>
@@ -52,7 +34,7 @@
           <nuxt-img
             v-if="movie?.poster_path"
             format="webp"
-            :src="img_starting_path + movie?.poster_path"
+            :src="movie?.poster_path"
             loading="lazy"
             @lading="console.log('load')"
           />
@@ -60,61 +42,51 @@
             v-else
             provider="random"
             format="webp"
+            loading="lazy"
             :src="`card-bg.png`"
           />
         </div>
         <div class="title">
-          <h3>{{ sliceHeadline(movie?.title) }}</h3>
+          <h3>{{ movie?.title }}</h3>
         </div>
         <div class="text">
-          {{ truncateText(movie?.overview, 280) }}
+          {{ movie?.overview }}
         </div>
         <div class="year">
-          {{ movie?.release_date?.split("-")[0] }}
+          {{ movie?.release_date }}
         </div>
         <div class="rating">
-          {{ movie?.vote_average.toFixed(1) }} / 10 <i class="far fa-eye"></i>
+          {{ movie?.vote_average }} / 10 <i class="far fa-eye"></i>
         </div>
         <NuxtLink :to="'movies/' + movie?.id">View More</NuxtLink>
       </div>
     </div>
-    <div v-if="loading" class="loading-indicator"><h1>Loading...</h1></div>
   </main>
 </template>
 
 <script setup>
+import { radioButtons } from "~/data/const.js";
+
 let searchTimeout;
-const img_starting_path = "https://image.tmdb.org/t/p/original";
 const pageCounter = ref(1);
 const searchInput = ref(null);
 const sortOption = ref(null);
-const { results } = await $fetch(`/api/movies?page=${pageCounter.value}`);
-let movies = reactive(results);
 const { loading } = loadMore();
+
+const data = await fetchLibraryPage(pageCounter.value);
+let movies = reactive(data);
+
 watch(loading, async (newValue) => {
   if (newValue && !searchInput.value) {
-    try {
-      pageCounter.value++;
-      const { results } = await $fetch(`/api/movies?page=${pageCounter.value}`);
-      movies.push(...results);
-      loading.value = false;
-      if (sortOption.value) {
-        sortOption.value = null;
-        ElNotification({
-          title: "Pay Attention..",
-          message: h(
-            "i",
-            { style: "color: black" },
-            "Loaded more videos, Library is unsorted.."
-          ),
-          position: "bottom-left",
-        });
-      }
-    } catch (err) {
-      console.log("Could not fetch more movies", err);
-    } finally {
-      loading.value = false;
+    pageCounter.value++;
+    const data = await fetchLibraryPage(pageCounter.value);
+    movies.push(...data);
+    console.log(sortOption.value, pageCounter.value);
+    if (pageCounter.value >= 2) {
+      notifyUnsorted();
+      sortOption.value?.forEach((opt) => (opt.checked = false));
     }
+    loading.value = false;
   }
 });
 
@@ -126,9 +98,9 @@ watch(searchInput, async (newValue) => {
   }
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(async () => {
-    const { results } = await $fetch(`/api/search?search=${newValue}`);
+    const data = await fetchSearch(newValue);
     movies.length = 0;
-    movies.push(...results);
+    movies.push(...data);
   }, 1000);
 });
 </script>
@@ -249,9 +221,11 @@ img {
 .card .title {
   height: 22%;
   width: 100%;
+  max-width: 95%;
   font-size: 1.2rem;
   text-align: center;
   font-weight: 700;
+  word-wrap: break-word;
   color: #fffc;
   padding: 15px 10px;
   position: absolute;

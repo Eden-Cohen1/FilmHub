@@ -10,7 +10,6 @@
 </template>
 
 <script setup>
-//original_title, overview, poster_path, release_date, vote_average
 const { width } = screenWidth();
 </script>
 

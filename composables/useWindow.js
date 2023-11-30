@@ -1,7 +1,7 @@
 export function screenWidth() {
   const width = ref(0);
 
-  function update(event) {
+  function update() {
     width.value = window.innerWidth;
   }
 

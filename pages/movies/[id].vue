@@ -6,12 +6,11 @@
 </template>
 
 <script setup>
-// backdrop_path, poster_path, budget, genres[index].name, homepage, original_title, overview, production_companies[0].name/.logo_path, release_date, revenue, vote_average **DETAILS**
 const route = useRoute();
-const { movie, reviews } = await $fetch(`/api/movies/${route.params.id}`);
+const movie = await fetchSingleMovie(route.params.id);
+const reviews = await fetchReviews(route.params.id);
 provide("movie", movie);
 provide("reviews", reviews);
-console.log(reviews.results);
 </script>
 
 <style scoped>

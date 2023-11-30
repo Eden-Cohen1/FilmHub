@@ -37,7 +37,6 @@ export default defineNuxtConfig({
         netlify: {
           baseURl: "",
         },
-        format: ["webp"],
       },
     },
   },
