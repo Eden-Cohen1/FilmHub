@@ -1,8 +1,10 @@
-import { options } from "~/data/const.js";
+import { options, validateSearch } from "~/data/const.js";
 export default defineEventHandler(async (event) => {
   const { search } = getQuery(event);
-  const response = await cachedSearch(search);
-  return response.results;
+  if (validateSearch(search)) {
+    const response = await cachedSearch(search);
+    return response.results;
+  }
 });
 
 const cachedSearch = cachedFunction(

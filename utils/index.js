@@ -122,10 +122,8 @@ export const fetchSingleMovie = async (id) => {
 export const fetchReviews = async (id) => {
   const { data } = await useFetch(`/api/reviews/?id=${id}`, {
     transform: (response) => {
-      console.log(response.results, "@@@@@@@@####");
       const reviews = [];
       response.results.forEach((rev) => {
-        console.log(rev, "11111");
         const review = {};
         review.content = rev.content;
         review.avatar = rev.author_details.avatar_path
@@ -141,6 +139,19 @@ export const fetchReviews = async (id) => {
   return data.value;
 };
 
+export const fetchTrailer = async (id) => {
+  const { data } = await useFetch(`/api/trailer?id=${id}`, {
+    transform: (response) => {
+      for (const video of response) {
+        if (video.type == "Trailer" && video.type === "YouTube") {
+          return video.key;
+        }
+      }
+    },
+  });
+  return data.value;
+};
+
 //notification for unsorder library
 export const notifyUnsorted = () => {
   return ElNotification({
@@ -151,7 +162,7 @@ export const notifyUnsorted = () => {
       "Loaded more videos, Library is unsorted..\n Click to go up 👆"
     ),
     position: "bottom-left",
-    duration: 15000,
+    duration: 6000,
     onClick: () => {
       window.scrollTo({ top: 0 });
     },

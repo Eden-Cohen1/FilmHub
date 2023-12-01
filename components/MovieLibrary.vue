@@ -77,18 +77,20 @@ const data = await fetchLibraryPage(pageCounter.value);
 let movies = reactive(data);
 
 watch(loading, async (newValue) => {
-  if (newValue && !searchInput.value) {
+  if (movies && newValue && !searchInput.value) {
     pageCounter.value++;
     const data = await fetchLibraryPage(pageCounter.value);
     movies.push(...data);
-    if (pageCounter.value >= 2) {
-      notifyUnsorted();
-      sortOption.value?.forEach((opt) => (opt.checked = false));
-    }
     loading.value = false;
   }
 });
 
+watch(pageCounter, (newValue) => {
+  if (newValue >= 3) {
+    notifyUnsorted();
+    sortOption.value?.forEach((opt) => (opt.checked = false));
+  }
+});
 watch(searchInput, async (newValue) => {
   if (newValue.length < 1) {
     movies.length = 0;

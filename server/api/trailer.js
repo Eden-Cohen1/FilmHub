@@ -3,16 +3,16 @@ import { options, validateID } from "~/data/const.js";
 export default defineEventHandler(async (event) => {
   const { id } = getQuery(event);
   if (validateID(id)) {
-    const reviews = await cachedReviews(id);
-    return reviews;
+    const trailer = await cachedTrailer(id);
+    return trailer.results;
   }
 });
 
-const cachedReviews = cachedFunction(
+const cachedTrailer = cachedFunction(
   async (id) => {
-    const url = `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&page=1`;
-    const review = await $fetch(url, options);
-    return review;
+    const url = `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
+    const trailer = await $fetch(url, options);
+    return trailer;
   },
   {
     maxAge: 60 * 60,
