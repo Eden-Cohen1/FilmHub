@@ -72,7 +72,6 @@ const pageCounter = ref(1);
 const searchInput = ref(null);
 const sortOption = ref(null);
 const { loading } = loadMore();
-
 const data = await fetchLibraryPage(pageCounter.value);
 let movies = reactive(data);
 
@@ -91,6 +90,7 @@ watch(pageCounter, (newValue) => {
     sortOption.value?.forEach((opt) => (opt.checked = false));
   }
 });
+
 watch(searchInput, async (newValue) => {
   if (newValue.length < 1) {
     movies.length = 0;
@@ -103,6 +103,7 @@ watch(searchInput, async (newValue) => {
     movies.length = 0;
     movies.push(...data);
   }, 1000);
+  pageCounter.value = 1;
 });
 </script>
 
@@ -209,7 +210,6 @@ label {
   border-radius: 3px;
   box-shadow: 0 0 10px #2a264f;
 }
-
 .card .img {
   width: 280px;
   height: auto;
@@ -247,7 +247,6 @@ img {
   opacity: 0;
   transition: all 0.5s ease;
 }
-
 .card .year {
   position: absolute;
   left: 10px;

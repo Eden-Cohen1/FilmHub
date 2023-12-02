@@ -58,7 +58,6 @@ h1 {
   color: black;
   font-weight: 15rem !important;
 }
-
 img {
   position: relative;
   top: 0;

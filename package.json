@@ -25,6 +25,7 @@
     "@nuxt/image": "^1.1.0",
     "@nuxt/image-edge": "^1.1.0-28346300.6030589",
     "@nuxtjs/style-resources": "^1.2.2",
+    "lite-youtube-embed": "^0.3.0",
     "nuxt-multi-cache": "^1.1.0",
     "unstorage": "^1.10.1"
   }

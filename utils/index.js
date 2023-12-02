@@ -58,6 +58,9 @@ export const fetchLibraryPage = async (page) => {
     transform: (response) => {
       const movies = [];
       response.forEach((oldMovie) => {
+        if (!oldMovie.poster_path) {
+          return;
+        }
         const movie = {};
         movie.poster_path = oldMovie.poster_path
           ? img_starting_path + oldMovie.poster_path
@@ -81,6 +84,9 @@ export const fetchSearch = async (search) => {
     transform: (response) => {
       const movies = [];
       response.forEach((oldMovie) => {
+        if (!oldMovie.poster_path) {
+          return;
+        }
         const movie = {};
         movie.poster_path = oldMovie.poster_path
           ? img_starting_path + oldMovie.poster_path
@@ -109,7 +115,7 @@ export const fetchSingleMovie = async (id) => {
       movie.production_company = response.production_companies[0].name;
       movie.genres = response.genres;
       movie.vote_average = response.vote_average.toFixed(1);
-      movie.budget = shortenNumber(response.budget);
+      movie.budget = response.budget ? shortenNumber(response.budget) : null;
       movie.overview = response.overview;
       movie.homepage = response.homepage;
       return movie;
@@ -142,7 +148,7 @@ export const fetchTrailer = async (id) => {
   const { data } = await useFetch(`/api/trailer?id=${id}`, {
     transform: (response) => {
       for (const video of response) {
-        if (video.type == "Trailer" && video.type === "YouTube") {
+        if (video.type == "Trailer" && video.site === "YouTube") {
           return video.key;
         }
       }
@@ -151,7 +157,7 @@ export const fetchTrailer = async (id) => {
   return data.value;
 };
 
-//notification for unsorder library
+//notification for unsorded library
 export const notifyUnsorted = () => {
   return ElNotification({
     title: "Pay Attention..",

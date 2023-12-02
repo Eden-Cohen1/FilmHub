@@ -13,7 +13,11 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "nuxt-gtag",
   ],
-  css: ["~/assets/main.css"],
+  plugins: ["@/plugins/youtube.client.js"],
+  css: [
+    "~/assets/main.css",
+    "~/node_modules/lite-youtube-embed/src/lite-yt-embed.css",
+  ],
   googleFonts: {
     families: {
       Montserrat: true,

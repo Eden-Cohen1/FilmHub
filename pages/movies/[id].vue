@@ -1,6 +1,7 @@
 <template>
   <main class="single-movie">
     <Movie />
+    <Youtube />
     <Reviews />
   </main>
 </template>
@@ -9,8 +10,11 @@
 const route = useRoute();
 const movie = await fetchSingleMovie(route.params.id);
 const reviews = await fetchReviews(route.params.id);
+const trailer = await fetchTrailer(route.params.id);
+
 provide("movie", movie);
 provide("reviews", reviews);
+provide("trailer", trailer);
 </script>
 
 <style scoped>

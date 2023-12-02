@@ -1,5 +1,7 @@
 import { sortByRating, sortByDate, sortByTitle } from "../utils/index.js";
+
 const token = process.env.TOKEN;
+
 export const options = {
   method: "GET",
   headers: {
@@ -14,5 +16,6 @@ export const radioButtons = [
   { text: "A-Z", function: sortByTitle },
 ];
 
-export const validateID = (id) => id?.length < 10 && id?.length > 2;
+export const validateID = (id) => id?.length < 11 && id?.length > 2;
+
 export const validateSearch = (search) => search?.length < 30;

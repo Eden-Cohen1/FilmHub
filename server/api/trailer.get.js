@@ -10,14 +10,13 @@ export default defineEventHandler(async (event) => {
 
 const cachedTrailer = cachedFunction(
   async (id) => {
-    console.log("~~Unchached trailer call~~");
     const url = `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
     const trailer = await $fetch(url, options);
     return trailer;
   },
   {
     maxAge: 60 * 60,
-    name: "reviews",
+    name: "trailer",
     getKey: (id) => id,
   }
 );

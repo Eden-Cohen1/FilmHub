@@ -33,7 +33,8 @@ reviews = reviews.filter((review) => review.content.length < 1500).slice(1, 8);
 </script>
 <style scoped>
 h1 {
-  text-align: left;
+  margin: auto;
+  font-size: 1.5rem;
 }
 .reviews {
   display: flex;
@@ -41,7 +42,9 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  padding-top: 5rem;
+  padding-top: 3rem;
+  max-width: 780px;
+  margin: auto;
 }
 figure.review {
   font-family: "Raleway", Arial, sans-serif;
@@ -108,12 +111,13 @@ figure.review .arrow {
   margin: 0;
   position: absolute;
 }
-
 .author-block {
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.176);
 }
 figure.review .author {
   position: relative;

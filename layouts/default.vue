@@ -5,8 +5,6 @@
   <slot />
 </template>
 
-<script setup></script>
-
 <style scoped>
 .nav-bar {
   width: 100%;

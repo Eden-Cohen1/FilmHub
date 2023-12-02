@@ -2,34 +2,57 @@
   <div class="movie-card">
     <div class="container">
       <div class="hero">
-        <NuxtImg format="webp" class="cover" :src="movie?.backdrop_path" />
-        <NuxtImg format="webp" class="card-img" :src="movie?.poster_path" />
-
+        <NuxtImg
+          v-if="movie?.backdrop_path"
+          format="webp"
+          class="cover"
+          :src="movie?.backdrop_path"
+        />
+        <NuxtImg
+          v-else
+          provider="random"
+          format="webp"
+          class="cover"
+          :src="`card-bg.png`"
+        />
+        <NuxtImg
+          v-if="movie?.poster_path"
+          format="webp"
+          class="card-img"
+          :src="movie?.poster_path"
+        />
+        <NuxtImg
+          v-else
+          provider="random"
+          format="webp"
+          class="card-img"
+          :src="`card-bg.png`"
+        />
         <div class="details">
           <div class="title1">
-            {{ movie.title }}
-            <span>{{ movie.release_date }}</span>
+            {{ movie?.title }}
+            <span>{{ movie?.release_date }}</span>
           </div>
-          <div class="title2">{{ movie.production_company }}</div>
+          <div class="title2">{{ movie?.production_company }}</div>
         </div>
       </div>
       <div class="description">
         <div class="column1">
-          <span class="tag" v-for="genre in movie.genres">{{
+          <span class="tag" v-for="genre in movie?.genres">{{
             genre.name
           }}</span>
           <br />
-          <span class="tag custom">{{ movie.vote_average }} / 10</span>
-          <span class="tag custom" v-show="movie.budget"
-            >Budget: {{ movie.budget }}</span
+          <span class="tag custom">{{ movie?.vote_average }} / 10</span>
+          <span class="tag custom" v-show="movie?.budget"
+            >Budget: {{ movie?.budget }}</span
           >
         </div>
         <div class="column2">
           <h1>Description</h1>
           <p>
-            {{ movie.overview }}
+            {{ movie?.overview }}
           </p>
-          <NuxtLink v-show="movie.homepage.length > 5" :to="movie.homepage"
+          <NuxtLink v-show="movie?.homepage.length > 5" :to="movie?.homepage"
             >View Website</NuxtLink
           >
         </div>
@@ -48,7 +71,6 @@ const movie = inject("movie");
   color: #a9a8a3;
   padding: 40px 0;
 }
-
 .container {
   margin: 0 auto;
   width: 780px;
@@ -69,7 +91,6 @@ const movie = inject("movie");
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
-
 .cover {
   position: absolute;
   top: 0px;
@@ -97,7 +118,6 @@ const movie = inject("movie");
   word-wrap: break-word;
   max-width: 90%;
 }
-
 .title1 {
   color: white;
   font-size: 2.2rem;
@@ -105,7 +125,6 @@ const movie = inject("movie");
   position: relative;
   height: fit-content;
 }
-
 .title1 span {
   position: absolute;
   top: 3px;
@@ -117,7 +136,6 @@ const movie = inject("movie");
   font-size: 14px;
   padding: 0px 4px;
 }
-
 .title2 {
   color: #c7c1ba;
   font-size: 23px;
@@ -125,7 +143,6 @@ const movie = inject("movie");
   margin-bottom: 15px;
   height: 10rem;
 }
-
 .description {
   bottom: 0px;
   height: 50%;
@@ -139,7 +156,6 @@ p {
   top: 0;
   width: 135%;
 }
-
 .column1 {
   position: relative;
   top: 10%;
@@ -147,7 +163,6 @@ p {
   text-align: left;
   width: fit-content;
 }
-
 a {
   text-decoration: none;
   color: black;
@@ -172,11 +187,9 @@ a:hover {
   line-height: 35px;
   cursor: pointer;
 }
-
 .tag:hover {
   background: #ddd;
 }
-
 .column2 {
   position: absolute;
   bottom: 10%;
@@ -188,7 +201,6 @@ a:hover {
 .column2 h1 {
   color: #888784;
 }
-
 .custom {
   background: #2a264f;
   color: white;
@@ -196,7 +208,6 @@ a:hover {
 .custom:hover {
   background-color: #1c1935;
 }
-
 @media screen and (max-width: 840px) {
   .container {
     width: 100%;
