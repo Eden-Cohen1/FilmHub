@@ -58,9 +58,8 @@ const movie = inject("movie");
   position: relative;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-  box-shadow: 0px 2px 3px 2px rgba(255, 255, 255, 0.26);
+  box-shadow: 0 0 10px #2a264f;
 }
-
 .hero {
   height: 400px;
   margin: 0;

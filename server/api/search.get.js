@@ -9,6 +9,7 @@ export default defineEventHandler(async (event) => {
 
 const cachedSearch = cachedFunction(
   async (search) => {
+    console.log("~~Unchached search call~~");
     const url = `https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`;
     const response = await $fetch(url, options);
     return response;
