@@ -58,7 +58,6 @@ export const fetchLibraryPage = async (page) => {
     transform: (response) => {
       const movies = [];
       response.forEach((oldMovie) => {
-        console.log(oldMovie);
         const movie = {};
         movie.poster_path = oldMovie.poster_path
           ? img_starting_path + oldMovie.poster_path

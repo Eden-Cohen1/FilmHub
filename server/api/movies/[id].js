@@ -10,6 +10,7 @@ export default defineEventHandler(async (event) => {
 
 const cachedSingleMovie = cachedFunction(
   async (id) => {
+    console.log("~~Unchached data call~~");
     const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
     const movie = await $fetch(url, options);
 
