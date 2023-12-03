@@ -11,7 +11,8 @@
             v-model="searchInput"
           />
           <button type="submit" @click.prevent="searchApi">
-            <Icon name="material-symbols:search" />
+            <Icon name="eos-icons:loading" v-if="searchLoading" />
+            <Icon name="material-symbols:search" v-else />
           </button>
         </div>
       </form>
@@ -70,6 +71,7 @@ const pageCounter = ref(1);
 const searchInput = ref(null);
 const sortOption = ref(null);
 const { loading } = loadMore();
+const searchLoading = ref(false);
 const data = await fetchLibraryPage(pageCounter.value);
 let movies = reactive(data);
 
@@ -90,9 +92,13 @@ watch(pageCounter, (newValue) => {
 });
 
 watch(searchInput, async (newValue) => {
+  searchLoading.value = true;
   if (newValue.length < 1) {
+    pageCounter.value = 1;
     movies.length = 0;
-    loading.value = true;
+    const data = await fetchLibraryPage(pageCounter.value);
+    movies.push(...data);
+    searchLoading.value = false;
     return;
   }
   clearTimeout(searchTimeout);
@@ -100,6 +106,7 @@ watch(searchInput, async (newValue) => {
     const data = await fetchSearch(newValue);
     movies.length = 0;
     movies.push(...data);
+    searchLoading.value = false;
   }, 1000);
   pageCounter.value = 1;
 });
@@ -196,6 +203,7 @@ label {
   justify-content: space-around;
   gap: 0.5rem;
   padding: 0rem 5rem;
+  min-height: 500px;
 }
 .card {
   position: relative;

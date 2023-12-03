@@ -4,7 +4,6 @@
       <div class="hero">
         <NuxtImg
           v-if="movie?.backdrop_path"
-          format="webp"
           class="cover"
           :src="movie?.backdrop_path"
         />
@@ -17,14 +16,12 @@
         />
         <NuxtImg
           v-if="movie?.poster_path"
-          format="webp"
           class="card-img"
           :src="movie?.poster_path"
         />
         <NuxtImg
           v-else
           provider="random"
-          format="webp"
           class="card-img"
           :src="`card-bg.png`"
         />
