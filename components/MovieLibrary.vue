@@ -103,11 +103,13 @@ watch(searchInput, async (newValue) => {
   }
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(async () => {
-    const data = await fetchSearch(newValue);
-    movies.length = 0;
-    movies.push(...data);
-    searchLoading.value = false;
-    pageCounter.value = 1;
+    if (searchLoading.value == true) {
+      const data = await fetchSearch(newValue);
+      movies.length = 0;
+      movies.push(...data);
+      searchLoading.value = false;
+      pageCounter.value = 1;
+    }
   }, 1000);
 });
 </script>
