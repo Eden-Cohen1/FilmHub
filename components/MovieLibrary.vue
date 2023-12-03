@@ -95,9 +95,8 @@ watch(searchInput, async (newValue) => {
   searchLoading.value = true;
   if (newValue.length < 1) {
     pageCounter.value = 1;
-
     movies.length = 0;
-    const data = await fetchLibraryPage(1);
+    const data = await fetchLibraryPage(pageCounter.value);
     movies.push(...data);
     searchLoading.value = false;
     return;
