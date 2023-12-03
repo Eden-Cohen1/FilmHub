@@ -95,8 +95,9 @@ watch(searchInput, async (newValue) => {
   searchLoading.value = true;
   if (newValue.length < 1) {
     pageCounter.value = 1;
+
     movies.length = 0;
-    const data = await fetchLibraryPage(pageCounter.value);
+    const data = await fetchLibraryPage(1);
     movies.push(...data);
     searchLoading.value = false;
     return;
@@ -107,8 +108,8 @@ watch(searchInput, async (newValue) => {
     movies.length = 0;
     movies.push(...data);
     searchLoading.value = false;
+    pageCounter.value = 1;
   }, 1000);
-  pageCounter.value = 1;
 });
 </script>
 
@@ -203,7 +204,7 @@ label {
   justify-content: space-around;
   gap: 0.5rem;
   padding: 0rem 5rem;
-  min-height: 500px;
+  min-height: 1000px;
 }
 .card {
   position: relative;
