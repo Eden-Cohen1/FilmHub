@@ -59,8 +59,13 @@ img {
   margin-bottom: 0;
 }
 @media screen and (max-width: 750px) {
-  .bg-hero {
-    min-height: 537px;
+  .hero {
+    height: 350px;
+    width: 100%;
+  }
+  .bg-hero img {
+    width: 100%;
+    height: auto;
   }
 }
 @media screen and (max-width: 1100px) {
