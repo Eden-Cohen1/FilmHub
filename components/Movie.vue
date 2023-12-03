@@ -5,17 +5,13 @@
         <NuxtImg
           v-if="movie?.backdrop_path"
           class="cover"
+          width="780"
           :src="movie?.backdrop_path"
         />
-        <NuxtImg
-          v-else
-          provider="random"
-          format="webp"
-          class="cover"
-          :src="`card-bg.png`"
-        />
+        <NuxtImg v-else provider="random" class="cover" :src="`card-bg.png`" />
         <NuxtImg
           v-if="movie?.poster_path"
+          width="234"
           class="card-img"
           :src="movie?.poster_path"
         />
@@ -23,6 +19,7 @@
           v-else
           provider="random"
           class="card-img"
+          width="234"
           :src="`card-bg.png`"
         />
         <div class="details">
