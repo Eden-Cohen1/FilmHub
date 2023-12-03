@@ -1,25 +1,17 @@
 <template>
-  <main class="hero" v-show="width">
+  <main class="hero">
     <div class="bg-hero">
       <NuxtImg
-        quality="80"
-        format="webp"
         provider="random"
         v-if="imgSize === 1"
-        :src="`hero-image.png`"
+        :src="`hero-image.webp`"
       />
       <NuxtImg
         provider="random"
-        format="webp"
         v-else-if="imgSize === 2"
-        :src="`hero-image-med.png`"
+        :src="`hero-image-med.webp`"
       />
-      <NuxtImg
-        provider="random"
-        format="webp"
-        v-else
-        :src="`hero-image-small.png`"
-      />
+      <NuxtImg provider="random" v-else :src="`hero-image-small.webp`" />
     </div>
   </main>
 </template>
@@ -45,6 +37,7 @@ const imgSize = computed(() => {
   display: flex;
   width: 100%;
   height: auto;
+  min-height: 456px;
   top: 0;
 }
 h1 {
@@ -65,9 +58,9 @@ img {
   height: auto;
   margin-bottom: 0;
 }
-@media screen and (max-width: 1100px) {
-  h1 {
-    top: 20vw;
+@media screen and (max-width: 750px) {
+  .bg-hero {
+    min-height: 537px;
   }
 }
 @media screen and (max-width: 1100px) {

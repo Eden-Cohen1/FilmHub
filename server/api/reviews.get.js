@@ -1,5 +1,4 @@
-import { options, validateID } from "~/data/const.js";
-
+import { $api, validateID } from "./helpers";
 export default defineEventHandler(async (event) => {
   const { id } = getQuery(event);
   if (validateID(id)) {
@@ -10,8 +9,8 @@ export default defineEventHandler(async (event) => {
 
 const cachedReviews = cachedFunction(
   async (id) => {
-    const url = `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&page=1`;
-    const review = await $fetch(url, options);
+    const url = `/movie/${id}/reviews?language=en-US&page=1`;
+    const review = await $api(url);
     return review;
   },
   {

@@ -31,17 +31,15 @@
     <div class="movie-container">
       <div class="card" v-for="movie in movies">
         <div class="img">
-          <nuxt-img
+          <NuxtImg
             v-if="movie?.poster_path"
-            format="webp"
+            width="280"
             :src="movie?.poster_path"
             loading="lazy"
-            @lading="console.log('load')"
           />
-          <nuxt-img
+          <NuxtImg
             v-else
             provider="random"
-            format="webp"
             loading="lazy"
             :src="`card-bg.png`"
           />

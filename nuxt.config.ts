@@ -23,11 +23,7 @@ export default defineNuxtConfig({
       Montserrat: true,
       "Open+Sans": true,
       Roboto: true,
-      Lato: true,
-      "Space+Mono": true,
       Poppins: true,
-      Playpen: true,
-      "Playpen+Sans": true,
     },
   },
   image: {
@@ -40,5 +36,6 @@ export default defineNuxtConfig({
         },
       },
     },
+    domains: ["image.tmdb.org"],
   },
 });

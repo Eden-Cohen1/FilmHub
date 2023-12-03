@@ -1,4 +1,4 @@
-import { options, validateSearch } from "~/data/const.js";
+import { $api, validateSearch } from "./helpers";
 
 export default defineEventHandler(async (event) => {
   const { search } = getQuery(event);
@@ -10,8 +10,8 @@ export default defineEventHandler(async (event) => {
 
 const cachedSearch = cachedFunction(
   async (search) => {
-    const url = `https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`;
-    const response = await $fetch(url, options);
+    const url = `/search/movie?query=${search}&include_adult=false&language=en-US&page=1`;
+    const response = await $api(url);
     return response;
   },
   {

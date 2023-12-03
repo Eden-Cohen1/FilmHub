@@ -1,4 +1,4 @@
-import { options, validateID } from "~/data/const.js";
+import { $api, validateID } from "./helpers";
 
 export default defineEventHandler(async (event) => {
   const { id } = getQuery(event);
@@ -10,8 +10,8 @@ export default defineEventHandler(async (event) => {
 
 const cachedTrailer = cachedFunction(
   async (id) => {
-    const url = `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
-    const trailer = await $fetch(url, options);
+    const url = `/movie/${id}/videos?language=en-US`;
+    const trailer = await $api(url);
     return trailer;
   },
   {
